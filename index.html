@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>老鸭工作室</title>
+    <!-- 极简，只留必要字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: #faf0e6;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+        }
+
+        /* 极简卡片 — 只保留基础框和微阴影 */
+        .card {
+            max-width: 480px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 40px;
+            padding: 40px 32px 36px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04), 0 1px 4px rgba(0, 0, 0, 0.03);
+            border: 1px solid #f0e2d2;
+            text-align: center;
+        }
+
+        /* 头像 — 干净圆形 */
+        .avatar {
+            width: 120px;
+            height: 120px;
+            background: #f7e3ce;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+            margin: 0 auto 16px;
+            border: 2px solid #e6d0b8;
+            box-shadow: 0 4px 0 #dbbd9c;
+        }
+
+        /* 姓名 + 副标 */
+        h1 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: #3d2614;
+            letter-spacing: 1px;
+            line-height: 1.2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .sub {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #7a5d41;
+            background: #f0e3d4;
+            padding: 4px 18px;
+            border-radius: 40px;
+            margin: 8px auto 0;
+            display: inline-block;
+            letter-spacing: 0.5px;
+        }
+
+        /* 个人介绍 — 只有文字 */
+        .bio {
+            margin: 24px 0 0;
+            padding: 0 4px;
+        }
+
+        .bio p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #2d1d0e;
+            font-weight: 400;
+        }
+
+        .bio .sig {
+            margin-top: 14px;
+            font-weight: 600;
+            color: #5a3d26;
+            font-size: 0.95rem;
+            border-top: 1px solid #dfceba;
+            padding-top: 14px;
+        }
+
+        /* 页脚 — 极简版权 */
+        .footer {
+            margin-top: 28px;
+            color: #8f755c;
+            font-weight: 500;
+            font-size: 0.75rem;
+            letter-spacing: 0.3px;
+            opacity: 0.5;
+        }
+
+        /* 响应式微调 */
+        @media (max-width: 420px) {
+            .card {
+                padding: 28px 20px 30px;
+                border-radius: 32px;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+            .avatar {
+                width: 96px;
+                height: 96px;
+                font-size: 52px;
+            }
+            .bio p {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <!-- 头像 -->
+        <div class="avatar" aria-label="臭屁老鸭头像">🦆</div>
+
+        <!-- 姓名 + 简短标签 -->
+        <h1>
+            老鸭工作室 <span style="font-size: 1.6rem;">🎮</span>
+        </h1>
+        <div class="sub"我们只做好玩的原版模组</div>
+
+        <!-- 个人介绍：纯文字 -->
+        <div class="bio">
+            <p>
+                我们没有瓶颈期，因为我们的脑洞是附魔过无限的
+            </p>
+            <div class="sig">致 咕汤</div>
+        </div>
+
+        <!-- 极简版权 -->
+        <div class="footer">© 2026 咕汤 · und</div>
+    </div>
+</body>
+</html>
