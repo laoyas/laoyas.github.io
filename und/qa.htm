@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>基岩版模组 · Q&A</title>
+    <!-- 极简风格，干净字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f7f5f2;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+            color: #1e1a16;
+        }
+
+        .card {
+            max-width: 680px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 36px;
+            padding: 36px 32px 40px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.02);
+            border: 1px solid #ece6df;
+        }
+
+        /* 头部 */
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 28px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ece6df;
+        }
+
+        .header .icon {
+            font-size: 2.6rem;
+            line-height: 1;
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1e1a16;
+            letter-spacing: -0.3px;
+        }
+
+        .header .badge {
+            background: #eae3da;
+            color: #4a3f36;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 2px 14px;
+            border-radius: 40px;
+            letter-spacing: 0.3px;
+            margin-left: 6px;
+            text-transform: uppercase;
+        }
+
+        /* Q&A 列表 */
+        .qa-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .qa-item {
+            background: #faf8f6;
+            border-radius: 20px;
+            padding: 18px 22px;
+            border: 1px solid #f0eae3;
+            transition: background 0.15s;
+        }
+
+        .qa-item:hover {
+            background: #f6f2ec;
+        }
+
+        .qa-item .question {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: #1e1a16;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+
+        .qa-item .question .qmark {
+            color: #b8a48c;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .qa-item .answer {
+            font-weight: 400;
+            font-size: 0.95rem;
+            color: #3d352c;
+            line-height: 1.6;
+            padding-left: 30px;
+        }
+
+        .qa-item .answer code {
+            background: #ede7df;
+            padding: 1px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-family: 'Inter', monospace;
+            color: #2d241c;
+            white-space: nowrap;
+        }
+
+        .qa-item .answer .note {
+            display: inline-block;
+            background: #f0eae3;
+            padding: 0 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #5a4d3e;
+        }
+
+        /* 底部 */
+        .footer {
+            margin-top: 32px;
+            padding-top: 18px;
+            border-top: 1px solid #ece6df;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            font-size: 0.8rem;
+            color: #8a7c6e;
+        }
+
+        .footer .tag {
+            background: #ede7df;
+            padding: 2px 14px;
+            border-radius: 40px;
+            font-weight: 500;
+            color: #4a3f36;
+        }
+
+        /* 响应式 */
+        @media (max-width: 480px) {
+            .card {
+                padding: 24px 18px 28px;
+                border-radius: 28px;
+            }
+            .header h1 {
+                font-size: 1.4rem;
+            }
+            .header .icon {
+                font-size: 2rem;
+            }
+            .qa-item {
+                padding: 14px 16px;
+            }
+            .qa-item .question {
+                font-size: 0.95rem;
+            }
+            .qa-item .answer {
+                font-size: 0.88rem;
+                padding-left: 24px;
+            }
+            .footer {
+                flex-direction: column;
+                align-items: flex-start;
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <!-- 头部 -->
+        <div class="header">
+            <span class="icon">⛏️</span>
+            <h1>
+                基岩版模组 Q&amp;A
+                <span class="badge">Bedrock</span>
+            </h1>
+        </div>
+
+        <!-- Q&A 列表 -->
+        <div class="qa-list">
+            <!-- 1 -->
+            <div class="qa-item">
+                <div class="question">
+                    <span class="qmark">Q.</span>
+                    如何安装基岩版模组？
+                </div>
+                <div class="answer">
+                    将 <code>.mcpack</code> 或 <code>.mcaddon</code> 文件直接双击打开，系统会调用 Minecraft 自动导入。导入后在世界设置中激活行为包和资源包即可。
+                </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="qa-item">
+                <div class="question">
+                    <span class="qmark">Q.</span>
+                    模组无法生效怎么办？
+                </div>
+                <div class="answer">
+                    ① 检查是否同时启用了行为包和资源包；② 确认游戏版本与模组要求的版本匹配；③ 尝试重启游戏或新建世界测试。部分模组需要开启“实验性玩法”。
+                </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="qa-item">
+                <div class="question">
+                    <span class="qmark">Q.</span>
+                    基岩版模组与 Java 版通用吗？
+                </div>
+                <div class="answer">
+                    不通用。基岩版使用 <code>.mcpack</code>/<code>.mcaddon</code> 格式，基于 C++ 引擎；Java 版模组为 <code>.jar</code> 格式，两者不兼容，无法互换使用。
+                </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="qa-item">
+                <div class="question">
+                    <span class="qmark">Q.</span>
+                    模组会导致存档损坏吗？
+                </div>
+                <div class="answer">
+                    风险较低，但建议安装模组前备份存档。部分大型模组或实验性模组可能影响存档结构，移除模组后原存档可能无法加载，备份是最佳习惯。
+                </div>
+            </div>
+
+            <!-- 5 -->
+            <div class="qa-item">
+                <div class="question">
+                    <span class="qmark">Q.</span>
+                    哪里可以下载基岩版模组？
+                </div>
+                <div class="answer">
+                    推荐 <strong>MCPEDL</strong>、<strong>9Minecraft</strong> 等社区网站，或直接在游戏内市场购买。注意从可信来源下载，避免第三方捆绑软件。
+                </div>
+            </div>
+
+            <!-- 6 -->
+            <div class="qa-item">
+                <div class="question">
+                    <span class="qmark">Q.</span>
+                    模组冲突了怎么解决？
+                </div>
+                <div class="answer">
+                    尝试逐一禁用模组排查冲突源。部分模组会修改相同游戏文件，优先加载排序靠前的模组。若冲突严重，建议只保留核心模组。
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部信息 -->
+        <div class="footer">
+            <span>📌 基于基岩版 1.21+ 常见问题</span>
+            <span class="tag">💡 持续更新</span>
+        </div>
+    </div>
+</body>
+  </html><!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>基岩版模组 · Q&A</title>
+    <!-- 极简风格，干净字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f7f5f2;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+            color: #1e1a16;
+        }
+
+        .card {
+            max-width: 680px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 36px;
+            padding: 36px 32px 40px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.02);
+            border: 1px solid #ece6df;
+        }
+
+        /* 头部 */
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 28px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ece6df;
+        }
+
+        .header .icon {
+            font-size: 2.6rem;
+            line-height: 1;
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1e1a16;
+            letter-spacing: -0.3px;
+        }
+
+        .header .badge {
+            background: #eae3da;
+            color: #4a3f36;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 2px 14px;
+            border-radius: 40px;
+            letter-spacing: 0.3px;
+            margin-left: 6px;
+            text-transform: uppercase;
+        }
+
+        /* Q&A 列表 */
+        .qa-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .qa-item {
+            background: #faf8f6;
+            border-radius: 20px;
+            padding: 18px 22px;
+            border: 1px solid #f0eae3;
+            transition: background 0.15s;
+        }
+
+        .qa-item:hover {
+            background: #f6f2ec;
+        }
+
+        .qa-item .question {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: #1e1a16;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+
+        .qa-item .question .qmark {
+            color: #b8a48c;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .qa-item .answer {
+            font-weight: 400;
+            font-size: 0.95rem;
+            color: #3d352c;
+            line-height: 1.6;
+            padding-left: 30px;
+        }
+
+        .qa-item .answer code {
+            background: #ede7df;
+            padding: 1px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-family: 'Inter', monospace;
+            color: #2d241c;
+            white-space: nowrap;
+        }
+
+        .qa-item .answer .note {
+            display: inline-block;
+            background: #f0eae3;
+            padding: 0 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #5a4d3e;
+        }
+
+        /* 底部 */
+        .footer {
+            margin-top: 32px;
+            padding-top: 18px;
+            border-top: 1px solid #ece6df;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            font-size: 0.8rem;
+            color: #8a7c6e;
+        }
+
+        .footer .tag {
+            background: #ede7df;
+            padding: 2px 14px;
+            border-radius: 40px;
+            font-weight: 500;
+            color: #4a3f36;
+        }
+
+        /* 响应式 */
+        @media (max-width: 480px) {
+            .card {
+                padding: 24px 18px 28px;
+                border-radius: 28px;
+            }
+            .header h1 {
+                font-size: 1.4rem;
+            }
+            .header .icon {
+                font-size: 2rem;
+            }
+            .qa-item {
+                padding: 14px 16px;
+            }
+            .qa-item .question {
+                font-size: 0.95rem;
+            }
+            .qa-item .answer {
+                font-size: 0.88rem;
+                padding-left: 24px;
+            }
+            .footer {
+                flex-direction: column;
+                align-items: flex-start;
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <!-- 头部 -->
+        <div class="header">
+            <span class="icon">⛏️</span>
+            <h1>
+                基岩版模组 Q&amp;A
+                <span class="badge">Bedrock</span>
+            </h1>
+        </div>
+
+        <!-- Q&A 列表 -->
+        <div class="qa-list">
+            <!-- 1 -->
+            <div class="qa-item">
+                <div class="question">
+                    <span class="qmark">Q.</span>
+                    如何安装基岩版模组？
+                </div>
+                <div class="answer">
+                    将 <code>.mcpack</code> 或 <code>.mcaddon</code> 文件直接双击打开，系统会调用 Minecraft 自动导入。导入后在世界设置中激活行为包和资源包即可。
+                </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="qa-item">
+                <div class="question">
+                    <span class="qmark">Q.</span>
+                    模组无法生效怎么办？
+                </div>
+                <div class="answer">
+                    ① 检查是否同时启用了行为包和资源包；② 确认游戏版本与模组要求的版本匹配；③ 尝试重启游戏或新建世界测试。部分模组需要开启“实验性玩法”。
+                </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="qa-item">
+                <div class="question">
+                    <span class="qmark">Q.</span>
+                    基岩版模组与 Java 版通用吗？
+                </div>
+                <div class="answer">
+                    不通用。基岩版使用 <code>.mcpack</code>/<code>.mcaddon</code> 格式，基于 C++ 引擎；Java 版模组为 <code>.jar</code> 格式，两者不兼容，无法互换使用。
+                </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="qa-item">
+                <div class="question">
+                    <span class="qmark">Q.</span>
+                    模组会导致存档损坏吗？
+                </div>
+                <div class="answer">
+                    风险较低，但建议安装模组前备份存档。部分大型模组或实验性模组可能影响存档结构，移除模组后原存档可能无法加载，备份是最佳习惯。
+                </div>
+            </div>
+
+            <!-- 5 -->
+            <div class="qa-item">
+                <div class="question">
+                    <span class="qmark">Q.</span>
+                    哪里可以下载基岩版模组？
+                </div>
+                <div class="answer">
+                    推荐 <strong>MCPEDL</strong>、<strong>9Minecraft</strong> 等社区网站，或直接在游戏内市场购买。注意从可信来源下载，避免第三方捆绑软件。
+                </div>
+            </div>
+
+            <!-- 6 -->
+            <div class="qa-item">
+                <div class="question">
+                    <span class="qmark">Q.</span>
+                    模组冲突了怎么解决？
+                </div>
+                <div class="answer">
+                    尝试逐一禁用模组排查冲突源。部分模组会修改相同游戏文件，优先加载排序靠前的模组。若冲突严重，建议只保留核心模组。
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部信息 -->
+        <div class="footer">
+            <span>📌 基于基岩版 1.21+ 常见问题</span>
+            <span class="tag">💡 持续更新</span>
+        </div>
+    </div>
+</body>
+              </html><!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>基岩版模组 · Q&A</title>
+    <!-- 极简风格，干净字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f7f5f2;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+            color: #1e1a16;
+        }
+
+        .card {
+            max-width: 680px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 36px;
+            padding: 36px 32px 40px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.02);
+            border: 1px solid #ece6df;
+        }
+
+        /* 头部 */
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 28px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ece6df;
+        }
+
+        .header .icon {
+            font-size: 2.6rem;
+            line-height: 1;
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1e1a16;
+            letter-spacing: -0.3px;
+        }
+
+        .header .badge {
+            background: #eae3da;
+            color: #4a3f36;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 2px 14px;
+            border-radius: 40px;
+            letter-spacing: 0.3px;
+            margin-left: 6px;
+            text-transform: uppercase;
+        }
+
+        /* Q&A 列表 */
+        .qa-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .qa-item {
+            background: #faf8f6;
+            border-radius: 20px;
+            padding: 18px 22px;
+            border: 1px solid #f0eae3;
+            transition: background 0.15s;
+        }
+
+        .qa-item:hover {
+            background: #f6f2ec;
+        }
+
+        .qa-item .question {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: #1e1a16;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+
+        .qa-item .question .qmark {
+            color: #b8a48c;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .qa-item .answer {
+            font-weight: 400;
+            font-size: 0.95rem;
+            color: #3d352c;
+            line-height: 1.6;
+            padding-left: 30px;
+        }
+
+        .qa-item .answer code {
+            background: #ede7df;
+            padding: 1px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-family: 'Inter', monospace;
+            color: #2d241c;
+            white-space: nowrap;
+        }
+
+        .qa-item .answer .note {
+            display: inline-block;
+            background: #f0eae3;
+            padding: 0 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #5a4d3e;
+        }
+
+        /* 底部 */
+        .footer {
+            margin-top: 32px;
+            padding-top: 18px;
+            border-top: 1px solid #ece6df;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            font-size: 0.8rem;
+            color: #8a7c6e;
+        }
+
+        .footer .tag {
+            background: #ede7df;
+            padding: 2px 14px;
+            border-radius: 40px;
+            font-weight: 500;
+            color: #4a3f36;
+        }
+
+        /* 响应式 */
+        @media (max-width: 480px) {
+            .card {
+                padding: 24px 18px 28px;
+                border-radius: 28px;
+            }
+            .header h1 {
+                font-size: 1.4rem;
+            }
+            .header .icon {
+                font-size: 2rem;
+            }
+            .qa-item {
+                padding: 14px 16px;
+            }
+            .qa-item .question {
+                font-size: 0.95rem;
+            }
+            .qa-item .answer {
+                font-size: 0.88rem;
+                padding-left: 24px;
+            }
+            .footer {
+                flex-direction: column;
+                align-items: flex-start;
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <!-- 头部 -->
+        <div class="header">
+            <span class="icon">⛏️</span>
+            <h1>
+                基岩版模组 Q&amp;A
+                <span class="badge">Bedrock</span>
+            </h1>
+        </div>
+
+        <!-- Q&A 列表 -->
+        <div class="qa-list">
+            <!-- 1 -->
+            <div class="qa-item">
+                <div class="question">
+                    <span class="qmark">Q.</span>
+                    如何安装基岩版模组？
+                </div>
+                <div class="answer">
+                    将 <code>.mcpack</code> 或 <code>.mcaddon</code> 文件直接双击打开，系统会调用 Minecraft 自动导入。导入后在世界设置中激活行为包和资源包即可。
+                </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="qa-item">
+                <div class="question">
+                    <span class="qmark">Q.</span>
+                    模组无法生效怎么办？
+                </div>
+                <div class="answer">
+                    ① 检查是否同时启用了行为包和资源包；② 确认游戏版本与模组要求的版本匹配；③ 尝试重启游戏或新建世界测试。部分模组需要开启“实验性玩法”。
+                </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="qa-item">
+                <div class="question">
+                    <span class="qmark">Q.</span>
+                    基岩版模组与 Java 版通用吗？
+                </div>
+                <div class="answer">
+                    不通用。基岩版使用 <code>.mcpack</code>/<code>.mcaddon</code> 格式，基于 C++ 引擎；Java 版模组为 <code>.jar</code> 格式，两者不兼容，无法互换使用。
+                </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="qa-item">
+                <div class="question">
+                    <span class="qmark">Q.</span>
+                    模组会导致存档损坏吗？
+                </div>
+                <div class="answer">
+                    风险较低，但建议安装模组前备份存档。部分大型模组或实验性模组可能影响存档结构，移除模组后原存档可能无法加载，备份是最佳习惯。
+                </div>
+            </div>
+
+            <!-- 5 -->
+            <div class="qa-item">
+                <div class="question">
+                    <span class="qmark">Q.</span>
+                    哪里可以下载基岩版模组？
+                </div>
+                <div class="answer">
+                    推荐 <strong>MCPEDL</strong>、<strong>9Minecraft</strong> 等社区网站，或直接在游戏内市场购买。注意从可信来源下载，避免第三方捆绑软件。
+                </div>
+            </div>
+
+            <!-- 6 -->
+            <div class="qa-item">
+                <div class="question">
+                    <span class="qmark">Q.</span>
+                    模组冲突了怎么解决？
+                </div>
+                <div class="answer">
+                    尝试逐一禁用模组排查冲突源。部分模组会修改相同游戏文件，优先加载排序靠前的模组。若冲突严重，建议只保留核心模组。
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部信息 -->
+        <div class="footer">
+            <span>📌 基于基岩版 1.21+ 常见问题</span>
+            <span class="tag">💡 持续更新</span>
+        </div>
+    </div>
+</body>
+  </html>l
